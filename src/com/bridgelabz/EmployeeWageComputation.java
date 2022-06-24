@@ -20,6 +20,6 @@ public class EmployeeWageComputation {
                 System.out.println("Employee is Absent");
         }
         int wage = workingHour * WAGE_PER_HOUR;
-        System.out.printl   n("Employee Daily wage is "+wage);
+        System.out.println("Employee Daily wage is "+wage);
     }
 }
