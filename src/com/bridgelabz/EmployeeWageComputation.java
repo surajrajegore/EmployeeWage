@@ -1,4 +1,10 @@
 package com.bridgelabz;
+interface IEmployeeWageComputation
+{
+    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
+
+    public void calculateTotalWage();
+}
 class CompanyEmpWage
 {
     final String COMPANY_NAME;
@@ -32,12 +38,9 @@ class CompanyEmpWage
     }
 }
 
-public class EmployeeWageComputation
-{
-    // class constants
+public class EmployeeWageComputation implements IEmployeeWageComputation {
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
-    // instance variables
     int noOfCompanies, index;
     CompanyEmpWage[] companies;
 
@@ -48,7 +51,7 @@ public class EmployeeWageComputation
         index = 0;
     }
 
-    void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
+   public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
     {
         companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
     }
@@ -71,7 +74,7 @@ public class EmployeeWageComputation
         }
     }
 
-    void calculateTotalWage()
+    public void calculateTotalWage()
     {
         for (CompanyEmpWage company : companies)
         {
