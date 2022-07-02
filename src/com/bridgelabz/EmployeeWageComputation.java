@@ -9,6 +9,7 @@ public class EmployeeWageComputation {
     private int wagePerHour;
     private int maxWorkingDays;
     private int maxWorkingHrs;
+    private int totalWage;
 
     public EmployeeWageComputation(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHrs) {
         this.companyName = companyName;
@@ -20,11 +21,14 @@ public class EmployeeWageComputation {
     public static void main(String args[]) {
         EmployeeWageComputation bmw = new EmployeeWageComputation("bmw",20,20,10);
         EmployeeWageComputation apple = new EmployeeWageComputation("apple",12,4,15);
-        System.out.println("total wage of "+bmw.companyName +" is " +bmw.calculateTotalWage());
-        System.out.println("total wage of "+apple.companyName +" is " +apple.calculateTotalWage());
+        bmw.calculateTotalWage();
+        System.out.println(bmw);
+        apple.calculateTotalWage();
+        System.out.println(apple);
+
     }
 
-    private int calculateTotalWage() {
+    private void calculateTotalWage() {
 
         int workingHours =0;
         int totalWorkingHours = 0;
@@ -48,8 +52,9 @@ public class EmployeeWageComputation {
             totalWorkingHours += workingHours;
             System.out.println("Days " +totalWorkingDays +" working hour is : " +workingHours );
         }
-        return totalWorkingHours * wagePerHour;
-
+         totalWage = totalWorkingHours * wagePerHour;
     }
-
+    public String toString(){
+        return "Total wage is of "+companyName +" is "+totalWage;
+    }
 }
