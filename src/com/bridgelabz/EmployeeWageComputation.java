@@ -1,4 +1,7 @@
 package com.bridgelabz;
+
+import java.util.ArrayList;
+
 interface IEmployeeWageComputation
 {
     public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
@@ -24,6 +27,7 @@ class CompanyEmpWage
 
     void setTotalEmployeeWage(int totalEmpWage)
     {
+
         this.totalEmpWage = totalEmpWage;
     }
 
@@ -42,18 +46,17 @@ public class EmployeeWageComputation implements IEmployeeWageComputation {
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
     int noOfCompanies, index;
-    CompanyEmpWage[] companies;
-
-    public EmployeeWageComputation(int noOfCompanies)
+    ArrayList<CompanyEmpWage> companies;
+    public EmployeeWageComputation()
     {
         this.noOfCompanies = noOfCompanies;
-        companies = new CompanyEmpWage[noOfCompanies];
-        index = 0;
+        companies = new ArrayList<>();
     }
 
    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
     {
-        companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+        CompanyEmpWage company = new CompanyEmpWage(companyName,wagePerHr,maxWorkingDays,maxWorkingHrs);
+        companies.add(company);
     }
 
     int generateEmployeeType()
@@ -105,10 +108,10 @@ public class EmployeeWageComputation implements IEmployeeWageComputation {
 
     public static void main(String args[])
     {
-        EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation(3);
-        employeeWageComputation.addCompany("Microsoft", 4, 30, 100);
-        employeeWageComputation.addCompany("Google", 5, 40, 170);
-        employeeWageComputation.addCompany("Apple", 9, 10, 70);
+        EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation();
+        employeeWageComputation.addCompany("soft", 4, 30, 100);
+        employeeWageComputation.addCompany("ogle", 5, 40, 170);
+        employeeWageComputation.addCompany("App", 9, 10, 70);
         employeeWageComputation.calculateTotalWage();
     }
 }
